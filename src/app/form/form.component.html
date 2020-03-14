@@ -1,0 +1,7 @@
+<form [formGroup] = 'addTodoForm' (ngSubmit)='onSubmit()'>
+    <fieldset>
+        <legend>Add todo</legend>
+        <input type="text" name='title' formControlName="addTodoTitle">
+        <button class='btn' type="submit">Submit</button>
+    </fieldset>
+</form>
