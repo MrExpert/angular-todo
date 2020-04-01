@@ -1,0 +1,15 @@
+ul {
+    width: auto;
+}
+ul li {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    list-style-type: circle;
+}
+button {
+    background-color: #1976d2;
+    color: white;
+    box-shadow: 4px 4px 3px #888888;
+    margin-left: 5px;
+}

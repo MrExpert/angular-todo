@@ -1,7 +1,7 @@
 <fieldset>
     <legend>All todos :</legend>
     <ul *ngFor = 'let todo of todos '>
-        <li>{{todo.title}}</li>
+        <li >{{todo.title}}<button (click)="deleteTodo($event,todo)">x</button></li>
     </ul>
     
 </fieldset>

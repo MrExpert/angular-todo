@@ -13,13 +13,16 @@ export class TodoDataService {
   { title: 'cook', id: 3, completed: false } ];
 
   items: Observable<any[]>;
+  itemDoc: AngularFirestoreDocument<Item>;
+  itemsCollection: AngularFirestoreCollection<Item>;
 //   constructor(private db: AngularFirestore) {
 //     const things = db.collection('things').valueChanges();
 //     things.subscribe(console.log);
 // }
 constructor(private db: AngularFirestore) {
   // this.items = this.db.collection('items').valueChanges();
-  this.items = this.db.collection('items').snapshotChanges().pipe(
+  this.itemsCollection = this.db.collection('items', ref => ref.orderBy('title', 'asc'));
+  this.items = this.itemsCollection.snapshotChanges().pipe(
     map(changes => changes.map( a => {
       const data = a.payload.doc.data() as Item;
       data.id = a.payload.doc.id;
@@ -48,5 +51,9 @@ getItems() {
     //  localStorage.setItem('Todos', todo);
     // return this.todos.push(todo);
     this.db.collection('items').add(todo);
+  }
+
+  deleteItem(todo: Item) {
+    this.db.doc(`items/${todo.id}`).delete();
   }
 }

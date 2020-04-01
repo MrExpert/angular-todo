@@ -19,4 +19,8 @@ export class ShowComponent implements OnInit {
     this.todoList.getItems().subscribe(items => { this.todos = items;  });
   }
 
+  deleteTodo (event, todo) {
+    this.todoList.deleteItem(todo);
+  }
+
 }
