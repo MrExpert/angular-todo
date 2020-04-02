@@ -1,7 +1,7 @@
 ul {
     width: auto;
 }
-ul li {
+ul li > div {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;

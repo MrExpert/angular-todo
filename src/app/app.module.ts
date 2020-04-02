@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 // import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 // export const firebaseConfig = environment.firebaseConfig;
 
@@ -23,7 +24,8 @@ import { environment } from 'src/environments/environment';
     AppComponent,
     MainpageComponent,
     FormComponent,
-    ShowComponent
+    ShowComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,20 @@
 <fieldset>
     <legend>All todos :</legend>
-    <ul *ngFor = 'let todo of todos '>
-        <li >{{todo.title}}<button (click)="deleteTodo($event,todo)">x</button></li>
+    <ul *ngFor = "let todo of todos">
+        <li >
+            <div *ngIf="!editState || itemToEdit.id !== todo.id">
+                <h4>{{todo.title}}</h4>
+                <span  (click)="editTodo($event,todo)">&#x270D;</span>
+            </div>
+            <div *ngIf="editState && itemToEdit.id == todo.id">
+                <form [formGroup] = 'editTodoForm' (ngSubmit)='onSubmit()'>
+                    <fieldset>
+                        <input type="text" name='title' formControlName="editTodoTitle" value="{{todo.title}}">
+                        <button class='btn' type="submit">Edit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </li>
     </ul>
     
 </fieldset>
