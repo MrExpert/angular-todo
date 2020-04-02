@@ -35,5 +35,8 @@ export class ShowComponent implements OnInit {
     this.editState = true;
     this.itemToEdit = todo;
   }
+  cancelEdit(event, todo){
+    this.editState = false;
+  }
 
 }

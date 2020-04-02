@@ -2,15 +2,22 @@
     <legend>All todos :</legend>
     <ul *ngFor = "let todo of todos">
         <li >
-            <div *ngIf="!editState || itemToEdit.id !== todo.id">
-                <h4>{{todo.title}}</h4>
-                <span  (click)="editTodo($event,todo)">&#x270D;</span>
+            <div class="flex" *ngIf="!editState || itemToEdit.id !== todo.id">
+                <div>
+                    <h4>{{todo.title}}</h4>
+                </div>
+                <div>
+                    <span  (click)="editTodo($event,todo)">&#x270D; </span>
+                    <button (click)="deleteTodo($event,todo)" class="d-btn">x</button>
+                </div>
             </div>
-            <div *ngIf="editState && itemToEdit.id == todo.id">
+            <div  *ngIf="editState && itemToEdit.id == todo.id">
                 <form [formGroup] = 'editTodoForm' (ngSubmit)='onSubmit()'>
                     <fieldset>
                         <input type="text" name='title' formControlName="editTodoTitle" value="{{todo.title}}">
                         <button class='btn' type="submit">Edit</button>
+                        <button (click)="cancelEdit($event,todo)" class="d-btn">x</button>
+
                     </fieldset>
                 </form>
             </div>
