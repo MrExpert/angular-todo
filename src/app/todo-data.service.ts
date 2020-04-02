@@ -56,4 +56,8 @@ getItems() {
   deleteItem(todo: Item) {
     this.db.doc(`items/${todo.id}`).delete();
   }
+
+  updateItem(updatedTodo:Item) {
+    this.db.doc(`items/${updatedTodo.id}`).update(updatedTodo);
+  }
 }

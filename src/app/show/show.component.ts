@@ -39,4 +39,9 @@ export class ShowComponent implements OnInit {
     this.editState = false;
   }
 
+  updateItem(event, todo:Item) {
+    todo.title = this.editTodoForm.value.editTodoTitle;
+    this.todoList.updateItem(todo);
+    this.editState = false;
+  }
 }
