@@ -1,4 +1,7 @@
 
+  body {
+    background-color: #e3e5ec;
+  }
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
@@ -283,4 +286,8 @@
       display: none;
       visibility: hidden;
     }
+  }
+
+  .n-design {
+    box-shadow: inset -5px -10px 5px rgb(0,0,0, 0.2), inset 5px 10px 5px rgba(255, 255, 255, 0.4)
   }

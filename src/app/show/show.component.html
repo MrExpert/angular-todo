@@ -8,15 +8,15 @@
                 </div>
                 <div>
                     <span  (click)="editTodo($event,todo)">&#x270D; </span>
-                    <button (click)="deleteTodo($event,todo)" class="d-btn">x</button>
+                    <button (click)="deleteTodo($event,todo)" class="d-btn n-design">x</button>
                 </div>
             </div>
             <div  *ngIf="editState && itemToEdit.id == todo.id">
                 <form [formGroup] = 'editTodoForm' (ngSubmit)='updateItem($event,todo)'>
                     <fieldset>
                         <input type="text" name='title' formControlName="editTodoTitle" value="{{todo.title}}">
-                        <button class='btn' type="submit">Edit</button>
-                        <button (click)="cancelEdit($event,todo)" class="d-btn">x</button>
+                        <button class='d-btn n-design' type="submit">Edit</button>
+                        <button (click)="cancelEdit($event,todo)" class="d-btn n-design">x</button>
 
                     </fieldset>
                 </form>
