@@ -2,7 +2,7 @@
     <legend>All todos :</legend>
     <ul *ngFor = "let todo of todos">
         <li >
-            <div class="flex" *ngIf="!editState || itemToEdit.id !== todo.id">
+            <div class="flex" *ngIf="!editState || itemToEdit.timstamp !== todo.timestamp">
                 <div>
                     <h4>{{todo.title}}</h4>
                 </div>
@@ -11,7 +11,7 @@
                     <button (click)="deleteTodo($event,todo)" class="d-btn n-design">x</button>
                 </div>
             </div>
-            <div  *ngIf="editState && itemToEdit.id == todo.id">
+            <div  *ngIf="editState && itemToEdit.timstamp == todo.timstamp">
                 <form [formGroup] = 'editTodoForm' (ngSubmit)='updateItem($event,todo)'>
                     <fieldset>
                         <input type="text" name='title' formControlName="editTodoTitle" value="{{todo.title}}">

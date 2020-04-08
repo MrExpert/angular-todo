@@ -1,6 +1,6 @@
 export interface Item {
     title: string;
-    id: string;
+    timestamp ?: string;
     completed: boolean;
     }
 

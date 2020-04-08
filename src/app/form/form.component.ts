@@ -11,7 +11,7 @@ import { Item } from '../models/Item';
 export class FormComponent implements OnInit {
 
   constructor( private todoList: TodoDataService) { }
-  
+
   addTodoForm = new FormGroup({
     addTodoTitle : new FormControl(''),
   });
@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
     // };
     const todo: Item = {
       title: this.addTodoForm.value.addTodoTitle,
-      id: '',
+      timestamp: '',
       completed: false
     };
     this.todoList.addTodo(todo);

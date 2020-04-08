@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Item } from './models/Item';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as firebase from 'firebase/app';
+
 
 
 @Injectable({
@@ -21,11 +23,12 @@ export class TodoDataService {
 // }
 constructor(private db: AngularFirestore) {
   // this.items = this.db.collection('items').valueChanges();
-  this.itemsCollection = this.db.collection('items', ref => ref.orderBy('title', 'asc'));
+
+  this.itemsCollection = this.db.collection('items', ref => ref.orderBy('timestamp', 'desc').limit(10));
   this.items = this.itemsCollection.snapshotChanges().pipe(
     map(changes => changes.map( a => {
       const data = a.payload.doc.data() as Item;
-      data.id = a.payload.doc.id;
+      data.timestamp = a.payload.doc.id;
       return data;
     })
     )
@@ -50,14 +53,18 @@ getItems() {
     // console.log('this is 2', this.todos);
     //  localStorage.setItem('Todos', todo);
     // return this.todos.push(todo);
-    this.db.collection('items').add(todo);
+    this.db.collection('items').add({
+      title: todo.title,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      completed: todo.timestamp
+    });
   }
 
   deleteItem(todo: Item) {
-    this.db.doc(`items/${todo.id}`).delete();
+    this.db.doc(`items/${todo.timestamp}`).delete();
   }
 
-  updateItem(updatedTodo:Item) {
-    this.db.doc(`items/${updatedTodo.id}`).update(updatedTodo);
+  updateItem(updatedTodo: Item) {
+    this.db.doc(`items/${updatedTodo.timestamp}`).update(updatedTodo);
   }
 }

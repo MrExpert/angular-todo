@@ -12,7 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class ShowComponent implements OnInit {
 
   todos: Item[];
-  editState: boolean = false;
+  editState = false;
   itemToEdit: Item;
 
   constructor( private todoList: TodoDataService ) { }
@@ -27,7 +27,7 @@ export class ShowComponent implements OnInit {
     this.todoList.getItems().subscribe(items => { this.todos = items;  });
   }
 
-  deleteTodo (event, todo) {
+  deleteTodo(event, todo) {
     this.todoList.deleteItem(todo);
   }
 
@@ -39,7 +39,7 @@ export class ShowComponent implements OnInit {
     this.editState = false;
   }
 
-  updateItem(event, todo:Item) {
+  updateItem(event, todo: Item) {
     todo.title = this.editTodoForm.value.editTodoTitle;
     this.todoList.updateItem(todo);
     this.editState = false;
